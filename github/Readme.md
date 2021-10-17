@@ -1,4 +1,4 @@
-# Tutorial on using git
+# Tutorial to use git
 ## _Colin Vilchis J.A_
 
 
