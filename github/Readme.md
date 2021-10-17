@@ -129,7 +129,7 @@ union between branches
 ```sh
 git merge
 ```
-nombre de ramas
+name of branches
 * development #experimental
 * hotfix
 * main
