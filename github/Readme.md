@@ -59,7 +59,7 @@ recognize the content of a file
 ```sh
 cat {file-name}.txt
 ```
-<img src="assets/cat_command.PNG" alt="aboutme" width="50"> </img>
+<img src="assets/cat_command.PNG" alt="cat_c" width="200"> </img>
 remember command history
 ```sh
 history
