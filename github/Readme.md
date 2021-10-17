@@ -82,6 +82,7 @@ rm --help
 __Open visual studio code__ 
 ```sh
 code
+code {file-name}.txt
 ```
 
 Creation of the work area within Ram memory 
@@ -96,6 +97,7 @@ Creation of the work area within Ram memory (clears at power off)
 Add your file changes to staging
 ```sh
 git add {file-name}.txt
+git add . # to update all the files
 ```
 
 Before add, the files are untraked, they can be identified by the git status command
@@ -105,26 +107,35 @@ git status
 
 Remove memory from staging
 ```sh
-git rm
+git rm 
+git rm --cached {file-name}.txt # delete from staging
 ```
-__*importante*__
-# 3:31
 
 It is a good practice to have branches of our work, by default the main branch is known as **master**
 
 Add staging changes to the final save branch
 ```sh
-git commit "{message to remember}"
+git commit -m "{message to remember}"
+git commit -am #files that have previously ever had add can be run in a single command the git add and git commit on new changes
+git commit -a # go to vim, use **esc + i** to send the message
 ```
+__*important*__
+* You need to identify your user, by default use the windows environment variables, it is good practice to make sure you use the desired user, go to git configuration.
+* When you don't add a command it change to vim editor, press **esc + shift + z + z** or **esc + w + q**
 
 Read changes from a branch
 ```sh
 git checkout
+git checkout {id_commit_#} {file-name}.txt # changes in the same branch
+git checkout {branch name} {file-name}.txt # pick up a different branch
 ```
+* The second case returns to a past state, the file does not exist within the commit, only in staging, be careful because if you commit, you delete it
+* The proper way to go back to the previous version is case 2 because it can be taken over by case 3 when you have a single branch. **You will follow a line shape that allows you to resume if you regret**
 
 Creation of branches, to work by areas in the same file
 ```sh
-git 
+git branch # read existing branches
+git branch {branch-name}
 ```
 
 Union between branches
@@ -136,3 +147,90 @@ Name of branches
 * hotfix
 * main
 * master
+
+Recognize the history of a repository
+```sh
+git log # It recognizes the entire git command line, that is, the command used
+git log {file-name}.txt
+git log --stat # Changes after commit, in specific files
+```
+
+Recognize lines that change in a file
+```sh
+git show {file-name}.txt # important for error traceability
+git diff {id_commit_1} {id_commit_2} # number 1 is the original, also allows you to identify staging differences and without tracking
+```
+* Problems can be solved with git add, you can use .gitignore to avoid files
+
+Go back to a previous version of the repository
+```sh
+git reset {id_commit_#} --hard # clears staging
+git reset {id_commit_#} --soft # remember staging
+```
+* The soft version allows adding what is stored in git add
+* If you want to go back in time you can use hard, use git log to recognize that everything is deleted
+
+
+## Git configuration
+
+Identify all git settings
+```sh
+git config
+```
+
+Recognize your default configuration
+```sh
+git config --list
+git config --list --show-origin # identifies where the settings are stored
+```
+* it is important to have a name and email
+
+Update settings
+```sh
+git config --global user.name "{my-name}"
+git config --global user.email "{my-email@gmail.com}"
+```
+
+## Remote repository
+The flow must be:
+Working directory -> Staging -> Local repository -> Remote repository
+
+
+Send from local repository to remote repository
+```sh
+git push {address} # It must be the HEAD of the master
+```
+Bring from remote repository to local repository
+```sh
+git clone {address}
+```
+Update your local repository, from a remote repository update
+```sh
+git fetch {address}
+git pull # run the fetch and merge command in one
+```
+* Brings it to the local repository but does not copy it to the files, to update the files, you must load the latest version from the local repository to the current version using git merge
+
+##### How to join two branches that are not compatible?
+* You should not checkout the master because you can lose your files, rather you should add the changes to your HEAD of your new branch.
+* Once saved you can do checkout master to go to the HEAD of the last branch "master"
+* In order to add the two changes, you must have updated the contents of each HEAD (add + commit)
+* A merge for good practices always occurs from master, but if you do not have to recognize that it is done from the root where you want to continue (cheackout master + merge newbranch = master full) 
+    * A conflict can occur if they share a line
+    * A merge is a commit and needs a message
+    * git log is updated with the content of the head of the last branch
+    
+    
+### Reminder
+* HEAD is the head of the workflow, you must continue the flow from the head, to solve the head error you only have to checkout on HEAD
+* The exception of this error is the creation of a new branch, which will have a new header
+* The command flow for the changes is:
+    * git status # acknowledge changes
+    * git add and commit or git commit -am for old one
+* Good practice for branch creation
+    * Recognize your position with __git status__
+    * __git show__ to recognize where the head is and know your last changes
+    * __git branch newbranch__  + __git show__ recognizes that the head points to the master and the new branch
+    * The last commit is stuck to two different branches , but continue working in master 
+    * Use git checkout to define the branch you will work on __git checkout newbranch__
+* The changes you make when you are on a branch only happen on it
