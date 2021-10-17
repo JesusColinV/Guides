@@ -191,25 +191,6 @@ git config --global user.name "{my-name}"
 git config --global user.email "{my-email@gmail.com}"
 ```
 
-## Remote repository
-The flow must be:
-Working directory -> Staging -> Local repository -> Remote repository
-
-
-Send from local repository to remote repository
-```sh
-git push {address} # It must be the HEAD of the master
-```
-Bring from remote repository to local repository
-```sh
-git clone {address}
-```
-Update your local repository, from a remote repository update
-```sh
-git fetch {address}
-git pull # run the fetch and merge command in one
-```
-* Brings it to the local repository but does not copy it to the files, to update the files, you must load the latest version from the local repository to the current version using git merge
 
 ##### How to join two branches that are not compatible?
 * You should not checkout the master because you can lose your files, rather you should add the changes to your HEAD of your new branch.
@@ -238,3 +219,52 @@ Conflict resolution
     * The last commit is stuck to two different branches , but continue working in master 
     * Use git checkout to define the branch you will work on __git checkout newbranch__
 * The changes you make when you are on a branch only happen on it
+
+
+# Tutorial to use github
+## _Colin Vilchis J.A_
+
+It is an online git server, it allows sharing and it is the visual interface of the repositories. Collaborative online tool.
+* organization: It is the company you collaborate with.
+* Project: it is a group of repositories that you can have.
+* Gist: Code snippet that you can share.
+* Licenses: there are open, restricted or semi-open code.
+
+## Remote repository
+The flow must be:
+Working directory -> Staging -> Local repository -> Remote repository
+
+Create a remote source of our files
+```sh
+git remote add origin {HTTP-address}
+git remote # shows that the pointer is in origin
+git remote -v # shows that the pointer is in origin verbally
+```
+
+Send from local repository to remote repository
+```sh
+git push {address} # It must be the HEAD of the master
+```
+Bring from remote repository to local repository
+```sh
+git clone {address}
+```
+Update your local repository, from a remote repository update
+```sh
+git fetch {address}
+git pull # run the fetch and merge command in one
+```
+* Brings it to the local repository but does not copy it to the files, to update the files, you must load the latest version from the local repository to the current version using git merge
+
+Steps to submit a file to your repository.
+* Get the request address to send your file
+    * Go to the download or clone function to see this address, it is recommended to use HTTPS.
+    * Create your remote repository with **git remote add origin {HTTP-address}**
+    * send your file to the remote rem using the command ** git push origin master ** 
+* A typical error is that the remote repository contains code that we do not have locally.
+    * The good practice is to first bring the remote contents to the local repository to later integrate and send it.
+    * You can do this with the ** git pull origin master ** command to indicate that you bring the repository to our master branch.
+        * A common warning is that there are no common commits, because we confirm that it does not exist in the repository. Make sure to talk about the same repository to continue.
+    * The indicated command to skip the previous error is ** git pull origin master --allow-unrelated-histories **
+    * Finally send your file to the remote rem using the command ** git push origin master ** 
+        * The record is saved with the github user that matches the git config email 
