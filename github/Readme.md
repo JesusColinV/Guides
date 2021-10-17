@@ -267,4 +267,42 @@ Steps to submit a file to your repository.
         * A common warning is that there are no common commits, because we confirm that it does not exist in the repository. Make sure to talk about the same repository to continue.
     * The indicated command to skip the previous error is ** git pull origin master --allow-unrelated-histories **
     * Finally send your file to the remote rem using the command ** git push origin master ** 
-        * The record is saved with the github user that matches the git config email 
+        * The record is saved with the github user that matches the git config email.
+
+#### Public keys and private keys
+It is the asymmetric siphoning of a single path, through an algorithmic process that links the keys between them mathematically.
+What is sifra in the public only opens privately
+* The public key is sent online
+* The writer copies a version of the public key.
+* Encrypt your message with the received public key and you can send the message.
+* The reader who owns the public key can use the private key to be able to decrypt the message.
+
+Configure SSH keys locally
+* You must create a private key and a public key in the local environment
+* Send the public key to the github repository
+   *  Github automatically sends the public key that belongs to it, to have a two-way communication
+* Connect to the repository using the SSH (secury share) protocol for remote computers
+* __ SSH keys are not created by repository or by project, are by ** person ** __ create them in the home folder, or main folder
+
+Change git local settings
+```sh
+git config -l # we visualize the current git configuration
+git config --global user.email "{github-email@gmail.com}" # use the same github email
+```
+Create SSH key
+```sh
+ssh -keygen -t rsa -b 4096 -C "{github-email@gmail.com}" # create by specifying the method to create the key and its complexity
+```
+
+##### Copy the .pub key and send to github
+
+Check that the SSH key server is on
+```sh
+$ eval $(ssh-agent -s) # you hope Agent pid #number
+```
+
+Add the key to the system,
+```sh
+~/.ssh/ # indicates the direction of the key
+ssh-add ~/.ssh/id_rsa # you add the private key
+```
