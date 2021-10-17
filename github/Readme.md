@@ -282,7 +282,7 @@ Configure SSH keys locally
 * Send the public key to the github repository
    *  Github automatically sends the public key that belongs to it, to have a two-way communication
 * Connect to the repository using the SSH (secury share) protocol for remote computers
-* __ SSH keys are not created by repository or by project, are by ** person ** __ create them in the home folder, or main folder
+* __SSH keys are not created by repository or by project, are by **person**__ create them in the home folder, or main folder
 
 Change git local settings
 ```sh
@@ -351,13 +351,13 @@ git push origin master
 
 recognize the branches of your project
 ```sh
-git git log --all --graph 
-git git log --all --graph --decorate --oneline # compressed information
+git log --all --graph 
+git log --all --graph --decorate --oneline # compressed information
 ```
 
 you can replace entire commands with variables
 ```sh
-seeChanges = "git git log --all --graph --decorate --oneline"
+seeChanges = "git log --all --graph --decorate --oneline"
 seeChanges # run the command
 ```
 
