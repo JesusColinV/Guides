@@ -220,7 +220,11 @@ git pull # run the fetch and merge command in one
     * A merge is a commit and needs a message
     * git log is updated with the content of the head of the last branch
     
-    
+Conflict resolution
+* It is caused when both branches modify the same lines
+* In your file, it's duplicated the line, remove the syntax and select the one you want or use the visual studio code function to graphically accept your change between the branches. Discuss with the author of the line about the best branch to save.
+
+
 ### Reminder
 * HEAD is the head of the workflow, you must continue the flow from the head, to solve the head error you only have to checkout on HEAD
 * The exception of this error is the creation of a new branch, which will have a new header
