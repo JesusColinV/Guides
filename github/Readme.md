@@ -48,29 +48,31 @@ Create a folder
 mkdir {project-name}
 ```
 
-create a file
+Create a file
 ```sh
 touch {file-name}.txt
 ```
 
 ## Commands to work
-recognize the content of a file
+Recognize the content of a file
 
 ```sh
 cat {file-name}.txt
 ```
 <img src="assets/cat_command.PNG" alt="cat_c" width="1000"> </img>
 
-remember command history
+Remember command history
 ```sh
 history
 !1 # repeat the first command, you can select the index you need
 ```
-delete a file
+
+Delete a file
 ```sh
 rm {file-name}.txt # be careful not to delete important files
 ```
-help to know a command
+
+Help to know a command
 ```sh
 {any} --help
 rm --help
@@ -125,11 +127,11 @@ Creation of branches, to work by areas in the same file
 git 
 ```
 
-union between branches
+Union between branches
 ```sh
 git merge
 ```
-name of branches
+Name of branches
 * development #experimental
 * hotfix
 * main
