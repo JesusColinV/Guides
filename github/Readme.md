@@ -294,8 +294,6 @@ Create SSH key
 ssh -keygen -t rsa -b 4096 -C "{github-email@gmail.com}" # create by specifying the method to create the key and its complexity
 ```
 
-##### Copy the .pub key and send to github
-
 Check that the SSH key server is on
 ```sh
 $ eval $(ssh-agent -s) # you hope Agent pid #number
@@ -306,3 +304,133 @@ Add the key to the system,
 ~/.ssh/ # indicates the direction of the key
 ssh-add ~/.ssh/id_rsa # you add the private key
 ```
+
+Copy the .pub key and send to github
+
+On github >> Settings >> SSH and GPG keys >> SSH keys/ Add new >> 
+```sh
+Title: computer-name
+Key: paste the key
+```
+
+Now you can clone a repository with SSH
+
+copy url
+
+View the repository address
+```sh
+git remote -v
+```
+
+Change origin url
+```sh
+git remote set-u origin {ssh-address}
+```
+
+View the repository address, confirm that the change was made
+```sh
+git remote -v
+```
+
+Check by making a change to your local file
+```sh
+git pull # pick up the remote repository
+git pull origin master # from the remote origin repository, merge it to master or select your current branch
+
+git status # check that it has not been added
+git diff # visualize the differences
+git commit -am "{message}" # create the commit
+```
+
+Now you can send your update using the command
+```sh
+git push origin master 
+```
+
+##### Using tags for version handling
+
+recognize the branches of your project
+```sh
+git git log --all --graph 
+git git log --all --graph --decorate --oneline # compressed information
+```
+
+you can replace entire commands with variables
+```sh
+seeChanges = "git git log --all --graph --decorate --oneline"
+seeChanges # run the command
+```
+
+hash is the identifier number of each branch
+```sh
+git tag -a {v0.1} -m "{message to identify the content of your version}" {id-hash}
+git tag # shows the list of existing tags
+git show-ref --tags # recognize the commit or hash to which a tag is connected
+```
+
+_tags are not changes so their assignment is not recognized in git status_
+but since its main use is in github, you must send it to the internet
+
+```sh
+git pull origin master
+git push origin --tags
+```
+
+It is possible to delete a tag
+```sh
+git tag # recognize existing tags
+git tag -d {tag-name} # borra un tag
+git pull origin master
+git push origin --tags # only deleted locally
+git push origin :refs/tags/dormido # now you delete the remote repository
+```
+
+
+##### Branch management in github
+
+recognize branches and their history in git
+```sh
+git show-branch
+git show-branch --all #more data
+```
+
+open a guide on git
+```sh
+gitK
+```
+
+Send branches to remote server
+```sh
+git pull origin master
+git checkout {branch-name} 
+git push origin {branch-name} 
+```
+
+##### Configuration for multiple collaborators on github
+
+
+* Set in the local environment the same name and mail as in github
+* you don't need to create a git init, start by cloning the working repository
+    * To be able to send a project, you need to join the team
+    * Anyone can clone the repository because they are configured publicly
+* Make sure that the members belong to the repository, this is configured from github in:
+    * Creator Settings >> collaborators >> Search by user
+    * _when the profile is not found, the account is not verified_
+    * It is possible to add it not by email, but by username
+* Make sure that collaborator accounts are public and verified.
+    * Customize profile
+    * Accept the inivitation from the github profile
+
+Editing a file
+```sh
+vim {file-name}.txt
+```
+
+Send a file
+```sh
+git pull origin master
+git push origin master # It will ask you for a username and password
+```
+_Error 403 indicates that the repository owner has not granted you access_
+
+
