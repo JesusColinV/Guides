@@ -434,3 +434,11 @@ git push origin master # It will ask you for a username and password
 _Error 403 indicates that the repository owner has not granted you access_
 
 
+### Reminder on good teamwork practices
+* Branches should be assigned to collaborations, one user per branch, and even one branch per component (optional)
+* Binary files are not sent to repositories, as well as packages or libraries
+    * Github doesn't update the cached (**ctrl + shift + r** or **ctrl + F5**) version of binary files, so you won't be able to actually see the changes. (picture proof) 
+    * Because they are large files, it is preferable to get reference links to the content, for libraries a requirements file is used
+* The master branch is exclusive for functional code, used for production
+* Avoid making many commits, take advantage of add to keep the content in staging, because in a long workflow, it can be impossible to find the reference points
+    * Tt is also possible to maintain the reference by reference branches
