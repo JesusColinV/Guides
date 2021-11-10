@@ -2,11 +2,11 @@
 
 Configurar Nombre que salen en los commits
 ```ssh
-	git config --global user.name "dasdo"
+	git config --global user.name "Jesus"
 ```
 Configurar Email
 ```ssh	
-	git config --global user.email dasdo1@gmail.com
+	git config --global user.email jealcovi98@gmail.com
 ```
 Marco de colores para los comando
 ```ssh
